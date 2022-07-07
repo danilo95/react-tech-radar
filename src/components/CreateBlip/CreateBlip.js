@@ -29,6 +29,7 @@ const CreateBlip = ({ quadrant, rings, id, blips }) => {
         {errors.name && <span>This field is required</span>}
         <input {...register("description")} placeholder="description" />
         <select {...register("quadrant", { required: true })}>
+          <option value="" />
           {quadrant.map((value) => (
             <option value={value} key={value}>
               {value}
@@ -37,6 +38,7 @@ const CreateBlip = ({ quadrant, rings, id, blips }) => {
         </select>
         {errors.quadrant && <span>This field is required</span>}
         <select {...register("ring", { required: true })}>
+          <option value="" />
           {rings.map((value) => (
             <option value={value} key={value}>
               {value}

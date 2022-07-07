@@ -4,14 +4,15 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 import Radar from "./components/Radar/Radar";
 import Loading from "./components/Loading/Loading";
 import CreateBlip from "./components/CreateBlip/CreateBlip";
+import DeleteBlip from "./components/DeleteBlip/DeleteBlip";
 import Drawer from "react-modern-drawer";
+import { RadarProvider } from "./context/RadarContext";
 import "react-modern-drawer/dist/index.css";
 
 const App = () => {
   const [setup, setSetup] = useState({ rings: [], quadrants: [], blips: [] });
   const [id, setId] = useState(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const q = query(collection(db, "radar"));
     onSnapshot(q, (querySnapshot) => {
@@ -27,18 +28,23 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <button onClick={toggleDrawer}>display</button>
-      <div className="App">{loading ? <Loading /> : <Radar {...setup} />}</div>
-      <Drawer open={isOpen} onClose={toggleDrawer} direction="bottom">
-        <CreateBlip
-          quadrant={setup.quadrants}
-          rings={setup.rings}
-          id={id}
-          blips={setup.blips}
-        />
-      </Drawer>
-    </div>
+    <RadarProvider>
+      <div className="App">
+        <button onClick={toggleDrawer}>display</button>
+        <DeleteBlip id={id} blips={setup.blips} />
+        <div className="App">
+          {loading ? <Loading /> : <Radar {...setup} />}
+        </div>
+        <Drawer open={isOpen} onClose={toggleDrawer} direction="bottom">
+          <CreateBlip
+            quadrant={setup.quadrants}
+            rings={setup.rings}
+            id={id}
+            blips={setup.blips}
+          />
+        </Drawer>
+      </div>
+    </RadarProvider>
   );
 };
 
