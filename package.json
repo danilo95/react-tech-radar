@@ -1,0 +1,91 @@
+{
+  "name": "react-tech-radar",
+  "description": "A React Component for Tech Radar inspired by ThoughtWorks' technology decision sharing project",
+  "version": "0.1.28",
+  "author": "Danilo Rivera",
+  "keywords": [
+    "d3",
+    "storybook",
+    "technology radar"
+  ],
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ],
+      "@babel/plugin-proposal-nullish-coalescing-operator",
+      "@babel/plugin-syntax-optional-chaining"
+    ]
+  },
+  "dependencies": {
+    "babel-loader": "8.0.5",
+    "d3-color": "^2.0.0",
+    "d3-scale": "^3.2.3",
+    "d3-scale-chromatic": "^2.0.0",
+    "d3-shape": "^2.0.0",
+    "firebase": "^9.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hook-form": "^7.33.1",
+    "react-modern-drawer": "^1.1.1",
+    "styled-components": "^4.3.2",
+    "webpack": "4.29.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": ">= 4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "NODE_ENV=production && rm -rf dist && mkdir dist && babel src/components --out-dir dist --copy-files",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.1",
+    "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "@storybook/addon-actions": "^6.1.9",
+    "@storybook/addon-console": "^1.2.2",
+    "@storybook/addon-links": "^6.1.9",
+    "@storybook/addons": "^6.1.9",
+    "@storybook/core": "6.1.9",
+    "@storybook/react": "^6.1.9",
+    "@storybook/theming": "latest",
+    "prop-types": "^15.7.2",
+    "react-scripts": "3.0.1",
+    "tabletop": "^1.5.2"
+  }
+}
